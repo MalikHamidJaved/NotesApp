@@ -24,7 +24,6 @@ import com.example.noteapp.R
  * @param exitAnimation ending animation
  * @param popEnterAnimation if any
  * @param popExitAnimation if any
- * @return void
  * @author Dawar Malik.
  */
 fun AppCompatActivity.replaceFragmentSafely(
@@ -59,7 +58,6 @@ fun AppCompatActivity.replaceFragmentSafely(
  * @param fragment destination Fragment
  * @param addToBackStack as Boolean default value is true
  * @param bundle as Bundle could be null
- * @return void
  * @author Dawar Malik.
  */
 fun Fragment.replaceFragment(
@@ -85,7 +83,6 @@ fun Fragment.replaceFragment(
 
 /**
  * Extension function to Fragment BackStack
- * @return void
  * @author Dawar Malik.
  */
 fun AppCompatActivity.clearBackStack() {
@@ -97,7 +94,6 @@ fun AppCompatActivity.clearBackStack() {
 
 /**
  * Extension function to pop back stack
- * @return void
  * @author Dawar Malik.
  */
 fun AppCompatActivity.backPress() {

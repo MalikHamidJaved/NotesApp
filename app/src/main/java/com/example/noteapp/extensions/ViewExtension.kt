@@ -8,7 +8,6 @@ import com.example.noteapp.App
 
 /**
  * Extension function to show toast message
- * @return void
  * @author Dawar Malik.
  */
 fun Any.showToastMsg(message: String) {
@@ -17,7 +16,6 @@ fun Any.showToastMsg(message: String) {
 
 /**
  * An Extension to make view Visible
- * @return void
  * @author Dawar Malik.
  */
 fun View.visible() {
@@ -26,7 +24,6 @@ fun View.visible() {
 
 /**
  * An Extension to make view Gone
- * @return void
  * @author Dawar Malik.
  */
 fun View.gone() {
@@ -35,7 +32,6 @@ fun View.gone() {
 
 /**
  * An Extension to close keyboard.
- * @return void
  * @author Dawar Malik.
  */
 fun View.closeKeyboard() {
