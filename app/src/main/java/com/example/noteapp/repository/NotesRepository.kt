@@ -45,6 +45,17 @@ class NotesRepository private constructor() : BaseRepository(),  CoroutineScope 
         }
     }
 
+    fun deleteById(id : Int){
+        launch { deleteNote(id) }
+    }
+
+    private suspend fun deleteNote(id : Int) {
+        withContext(Dispatchers.IO) {
+            notesDao?.deleteById(id)
+        }
+    }
+
+
     companion object {
         private var instance: NotesRepository? = null
         fun getInstance(): NotesRepository {

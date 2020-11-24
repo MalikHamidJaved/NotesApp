@@ -8,6 +8,7 @@ import com.example.noteapp.R
 import com.example.noteapp.base.BaseActivity
 import com.example.noteapp.database.model.Notes
 import com.example.noteapp.extensions.showToastMsg
+import com.example.noteapp.extensions.visible
 import com.example.noteapp.utils.Const.NOTE_ID
 import com.example.noteapp.utils.load
 import com.example.noteapp.viewmodels.NoteViewModel
@@ -28,8 +29,9 @@ class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
         }
 
         btnSave.setOnClickListener(this)
+        btnDelete.setOnClickListener(this)
 
-        //if intent isn't null, call the viewmodel to fetch the note by Id
+        //if intent isn't null, call the viewModel to fetch the note by Id
         intent.extras?.run {
             noteViewModel.getSingleNote(this.getInt(NOTE_ID))
         }
@@ -44,6 +46,7 @@ class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
     private var noteId: Int = 0
     override fun onSingleNote(notes: Notes) {
         notes.apply {
+            btnDelete?.visible()
             noteId = notes.id
             etTitle.setText(title)
             etImg.setText(image)
@@ -83,6 +86,9 @@ class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
                         etDetails.text.toString()
                     )
                 }
+            }
+            R.id.btnDelete -> {
+                noteViewModel.deleteItem(noteId)
             }
         }
     }

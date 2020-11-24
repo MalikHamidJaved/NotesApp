@@ -8,4 +8,5 @@
     <string name="img_url">Image url (optional)</string>
     <string name="details">Description</string>
     <string name="updated">edited</string>
+    <string name="delete">Delete</string>
 </resources>
