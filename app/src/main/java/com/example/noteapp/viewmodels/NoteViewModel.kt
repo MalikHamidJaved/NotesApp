@@ -2,6 +2,7 @@ package com.example.noteapp.viewmodels
 
 import com.example.noteapp.base.BaseViewModel
 import com.example.noteapp.database.model.Notes
+import com.example.noteapp.extensions.checkValidURL
 
 /**
  * The HomeViewModel.kt
@@ -20,7 +21,6 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
     }
 
     fun saveNoteInDB(title: String?, imgUrl: String?, description: String?) {
-
         validateData(title, description).let {
             if (it) {
                 notesRepository.saveNote(
@@ -54,11 +54,11 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
             } else
                 return
         }
-
     }
 
     private fun validateData(title: String?, description: String?): Boolean {
         getView().updateButtonState(false)
+
         if (title.isNullOrBlank()) {
             getView().onUpdateUser("Title cannot be empty")
             getView().updateButtonState(true)

@@ -1,9 +1,7 @@
 package com.example.noteapp.utils
 
 import android.widget.ImageView
-import com.example.noteapp.R
-import io.pixel.android.Pixel
-import io.pixel.android.config.PixelOptions
+import com.bumptech.glide.Glide
 
 /**
  *
@@ -12,10 +10,5 @@ import io.pixel.android.config.PixelOptions
  * @author Malik Dawar, malikdawar@hotmail.com
  */
 fun ImageView.load(url: String?) {
-    Pixel.load(
-        url = url,
-        imageView = this,
-        pixelOptions = PixelOptions.Builder()
-            .setPlaceholderResource(R.mipmap.ic_launcher).build()
-    )
+    Glide.with(this).load(url).into(this)
 }

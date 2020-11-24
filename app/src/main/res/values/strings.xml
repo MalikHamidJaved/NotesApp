@@ -6,5 +6,5 @@
     <string name="title">Note title</string>
     <string name="img_url">Image url (optional)</string>
     <string name="details">Description</string>
-    <string name="updated">Updated</string>
+    <string name="updated">edited</string>
 </resources>
