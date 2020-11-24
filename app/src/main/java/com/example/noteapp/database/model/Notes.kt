@@ -3,13 +3,13 @@ package com.example.noteapp.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
+
 
 @Entity(tableName = "message_table")
 data class Notes(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id") var id: Int,
+    @ColumnInfo(name = "id") var id: Int = 0,
 
     @ColumnInfo(name = "title")
     var title: String,
@@ -21,9 +21,8 @@ data class Notes(
     var image: String?,
 
     @ColumnInfo(name = "date")
-    var date: Date,
+    var date: Long? = System.currentTimeMillis(),
 
     @ColumnInfo(name = "isUpdated")
-    var isUpdated: Boolean = false,
-
+    var isUpdated: Boolean = false
 )
