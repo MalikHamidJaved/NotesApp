@@ -74,5 +74,16 @@
             android:textAllCaps="false"
             android:textColor="@color/white" />
 
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/padding_16"
+            android:background="@drawable/bg_btn_delete"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textColor="@color/color_red" />
+
     </LinearLayout>
 </LinearLayout>

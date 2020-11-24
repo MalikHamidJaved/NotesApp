@@ -14,8 +14,6 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         notesRepository.getNote(id)?.observe(getObserver(), {
             if (it != null) {
                 getView().onSingleNote(it)
-            } else {
-                getView().onUpdateUser("Something went wrong")
             }
         })
     }
@@ -71,6 +69,12 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
             return false
         }
         return true
+    }
+
+    fun deleteItem(id: Int) {
+        getView().updateButtonState(false)
+        notesRepository.deleteById(id)
+        getView().onSuccess("Deleted successfully")
     }
 
     interface View {
