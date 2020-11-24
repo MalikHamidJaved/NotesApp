@@ -10,7 +10,7 @@ import android.os.Build
 /**
  * An internet monitor class for Android API Lollipop and above.
  * @param onInternetConnectivityListener A listener for states.
- * @author Malik Dawar
+ * @author Malik Dawar, malikdawar@hotmail.com
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 class InternetMonitor(private val onInternetConnectivityListener: OnInternetConnectivityListener) {

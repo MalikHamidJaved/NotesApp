@@ -65,7 +65,7 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     //image downloading lib
-    implementation 'io.pixel.android:pixel:0.0.2'
+    implementation 'io.pixel.android:pixel:0.0.3-alpha'
 
     //Custom Progressbar dependency
     implementation 'com.kaopiz:kprogresshud:1.2.0'

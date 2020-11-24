@@ -1,7 +1,6 @@
 package com.example.noteapp.repository
 
 import com.example.noteapp.base.BaseRepository
-import com.example.noteapp.database.AppDatabase
 import com.example.noteapp.database.dao.NotesDao
 import com.example.noteapp.database.model.Notes
 import kotlinx.coroutines.CoroutineScope
@@ -22,15 +21,27 @@ class NotesRepository private constructor() : BaseRepository(),  CoroutineScope 
 
     private var notesDao: NotesDao? = appDatabase.getNotesDao()
 
-    fun getNotesList() = notesDao?.getMessages()
+    fun getNotesList() = notesDao?.getNotes()
 
-    fun saveNote(message: Notes) {
-        launch { saveNoteInDB(message) }
+    fun getNote(id: Int) = notesDao?.getSingleNote(id)
+
+    fun saveNote(note: Notes) {
+        launch { saveNoteInDB(note) }
     }
 
-    private suspend fun saveNoteInDB(message: Notes) {
+    private suspend fun saveNoteInDB(note: Notes) {
         withContext(Dispatchers.IO) {
-            notesDao?.setMessage(message)
+            notesDao?.setNote(note)
+        }
+    }
+
+    fun updateNote(note: Notes) {
+        launch { updateNoteInDB(note) }
+    }
+
+    private suspend fun updateNoteInDB(note: Notes) {
+        withContext(Dispatchers.IO) {
+            notesDao?.updateNote(note)
         }
     }
 

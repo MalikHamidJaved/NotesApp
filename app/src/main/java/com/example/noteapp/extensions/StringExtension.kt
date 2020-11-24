@@ -5,7 +5,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * Extension function to show toast message
+ * The StringExtension.kt
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
+
+/**
+ * Extension function to convert timestamp to date
  * @author Dawar Malik.
  */
 @SuppressLint("SimpleDateFormat")

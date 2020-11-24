@@ -4,8 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * The Notes.kt
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
 
-@Entity(tableName = "message_table")
+@Entity(tableName = "note_table")
 data class Notes(
 
     @PrimaryKey(autoGenerate = true)

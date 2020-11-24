@@ -1,18 +1,17 @@
 package com.example.noteapp.base
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.noteapp.extensions.gone
 import com.example.noteapp.extensions.visible
 import com.example.noteapp.utils.InternetMonitor
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.ui_internet_monitor.*
+
+/**
+ * The BaseActivity.kt
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
 
 abstract class BaseActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
-    }
 
     private val internetMonitor = InternetMonitor(object :
         InternetMonitor.OnInternetConnectivityListener {

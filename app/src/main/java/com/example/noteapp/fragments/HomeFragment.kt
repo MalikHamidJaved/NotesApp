@@ -14,6 +14,7 @@ import com.example.noteapp.adapter.NotesAdapter
 import com.example.noteapp.base.BaseFragment
 import com.example.noteapp.database.model.Notes
 import com.example.noteapp.extensions.showToastMsg
+import com.example.noteapp.utils.Const.NOTE_ID
 import com.example.noteapp.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -76,6 +77,6 @@ class HomeFragment : BaseFragment(), HomeViewModel.View, NotesAdapter.NoteItemCl
 
     //On note item click listener
     override fun onItemClickListener(note: Notes) {
-
+        startActivity(Intent(mainActivity, NoteActivity::class.java).putExtra(NOTE_ID, note.id))
     }
 }
