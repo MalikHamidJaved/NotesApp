@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.noteapp.R
 import com.example.noteapp.database.model.Notes
 import com.example.noteapp.extensions.convertDateToFormat
+import com.example.noteapp.extensions.gone
+import com.example.noteapp.extensions.visible
 import com.example.noteapp.utils.load
 
 class NotesAdapter(
@@ -24,6 +26,7 @@ class NotesAdapter(
         var tvTitle = view.findViewById(R.id.tvTitle) as TextView
         var tvDetails = view.findViewById(R.id.tvDetails) as TextView
         var tvDate = view.findViewById(R.id.tvDate) as TextView
+        var tvUpdatedTag = view.findViewById(R.id.tvUpdatedTag) as TextView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -45,6 +48,11 @@ class NotesAdapter(
             holder.imgView.load(image)
             holder.tvDate.text = date?.convertDateToFormat()
 
+            if (isUpdated)
+                holder.tvUpdatedTag.visible()
+            else
+                holder.tvUpdatedTag.gone()
+
             holder.mainLayout.setOnClickListener {
                 noteItemClickListener.onItemClickListener(this)
             }
@@ -52,6 +60,6 @@ class NotesAdapter(
     }
 
     interface NoteItemClickListener {
-        fun onItemClickListener(note : Notes)
+        fun onItemClickListener(note: Notes)
     }
 }
