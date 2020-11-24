@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -27,9 +28,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
 }
 
 dependencies {
@@ -59,4 +62,7 @@ dependencies {
 
     //image downloading lib
     implementation 'io.pixel.android:pixel:0.0.2'
+
+    //Custom Progressbar dependency
+    implementation 'com.kaopiz:kprogresshud:1.2.0'
 }

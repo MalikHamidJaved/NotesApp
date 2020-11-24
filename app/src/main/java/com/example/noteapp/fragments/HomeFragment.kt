@@ -31,6 +31,7 @@ class HomeFragment : BaseFragment(),  HomeViewModel.View{
             it.attachView(this)
         }
 
+
     }
 
     override fun showProgressBar() {
