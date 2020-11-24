@@ -10,7 +10,6 @@ import com.example.noteapp.base.BaseViewModel
 
 class HomeViewModel : BaseViewModel<HomeViewModel.View>() {
 
-
     interface View {
         fun showProgressBar()
         fun dismissProgressBar()

@@ -2,6 +2,7 @@ package com.example.noteapp.base
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
+import com.example.noteapp.repository.Repository
 import org.koin.java.KoinJavaComponent
 import org.koin.java.KoinJavaComponent.inject
 
@@ -13,6 +14,10 @@ import org.koin.java.KoinJavaComponent.inject
 abstract class BaseViewModel<View> : ViewModel() {
     private var view: View? = null
     private var lifecycleOwner: LifecycleOwner? = null
+
+    protected val repository: Repository by inject(
+        Repository::class.java
+    )
 
     /**
      * This method must be called by the UI to attach navigation to be monitored by the substituted view model to respond to UI specific event changes.
