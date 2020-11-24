@@ -16,7 +16,7 @@ interface NotesDao {
     fun setNote(note: Notes)
 
     @Query("SELECT * from note_table ORDER BY id ASC")
-    fun getNotes() : LiveData<List<Notes>>
+    fun getNotes(): LiveData<List<Notes>>
 
     @Query("DELETE FROM note_table")
     fun deleteAll()
@@ -26,4 +26,7 @@ interface NotesDao {
 
     @Update
     fun updateNote(vararg note: Notes)
+
+    @Query("DELETE FROM note_table WHERE id = :id")
+    fun deleteById(id: Int)
 }

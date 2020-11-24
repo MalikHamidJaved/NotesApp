@@ -17,13 +17,13 @@ abstract class BaseActivity : AppCompatActivity() {
         InternetMonitor.OnInternetConnectivityListener {
         override fun onInternetAvailable() {
             runOnUiThread {
-                top_connection_shower.gone()
+                top_connection_shower?.gone()
             }
         }
 
         override fun onInternetLost() {
             runOnUiThread {
-                top_connection_shower.visible()
+                top_connection_shower?.visible()
             }
         }
     })

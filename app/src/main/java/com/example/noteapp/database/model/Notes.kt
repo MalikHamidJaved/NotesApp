@@ -22,7 +22,7 @@ data class Notes(
     var description: String,
 
     @ColumnInfo(name = "image")
-    var image: String?,
+    var image: String? = null,
 
     @ColumnInfo(name = "date")
     var date: Long? = System.currentTimeMillis(),
