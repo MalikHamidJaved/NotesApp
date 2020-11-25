@@ -37,7 +37,6 @@ class HomeFragment : BaseFragment(), HomeViewModel.View, NotesAdapter.NoteItemCl
         homeViewModel.let {
             it.attachObserver(this)
             it.attachView(this)
-            it.getNotesFromDB()
         }
 
         faBtnCreate.setOnClickListener {
@@ -76,5 +75,10 @@ class HomeFragment : BaseFragment(), HomeViewModel.View, NotesAdapter.NoteItemCl
     //On note item click listener
     override fun onItemClickListener(note: Notes) {
         startActivity(Intent(mainActivity, NoteActivity::class.java).putExtra(NOTE_ID, note.id))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        homeViewModel.getNotesFromDB()
     }
 }
