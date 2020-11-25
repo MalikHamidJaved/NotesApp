@@ -17,7 +17,7 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         })
     }
 
-    fun saveNoteInDB(title: String?, imgUrl: String?, description: String?) {
+    fun saveNoteInDB(title: String?, imgUrl: String? = null, description: String?) {
         validateData(title, description).let {
             if (it) {
                 notesRepository.saveNote(
