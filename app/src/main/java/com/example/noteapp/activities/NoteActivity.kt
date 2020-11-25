@@ -1,6 +1,5 @@
 package com.example.noteapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -13,11 +12,17 @@ import com.example.noteapp.utils.Const.NOTE_ID
 import com.example.noteapp.utils.load
 import com.example.noteapp.viewmodels.NoteViewModel
 import kotlinx.android.synthetic.main.activity_note.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+/**
+ * The NoteActivity.kt, to crete/edit/delete
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
 class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
 
     private val noteViewModel: NoteViewModel by viewModels()
 
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
@@ -45,13 +50,15 @@ class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
     //on fetching the data against the id if intent isn't null
     private var noteId: Int = 0
     override fun onSingleNote(notes: Notes) {
-        notes.apply {
-            btnDelete?.visible()
-            noteId = notes.id
-            etTitle.setText(title)
-            etImg.setText(image)
-            etDetails.setText(description)
-            imgView.load(image)
+        runOnUiThread {
+            notes.apply {
+                btnDelete?.visible()
+                noteId = notes.id
+                etTitle.setText(title)
+                etImg.setText(image)
+                etDetails.setText(description)
+                imgView.load(image)
+            }
         }
     }
 
@@ -87,6 +94,7 @@ class NoteActivity : BaseActivity(), NoteViewModel.View, View.OnClickListener {
                     )
                 }
             }
+            //to delete the specific note from DB
             R.id.btnDelete -> {
                 noteViewModel.deleteItem(noteId)
             }

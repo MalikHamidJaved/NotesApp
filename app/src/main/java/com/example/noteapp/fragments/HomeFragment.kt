@@ -22,9 +22,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * The HomeFragment.kt
  * @author Malik Dawar, malikdawar@hotmail.com
  */
-
 class HomeFragment : BaseFragment(), HomeViewModel.View, NotesAdapter.NoteItemClickListener {
-
     private val homeViewModel: HomeViewModel by viewModels()
     private var notesAdapter: NotesAdapter? = null
 

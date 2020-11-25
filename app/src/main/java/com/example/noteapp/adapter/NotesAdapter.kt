@@ -15,12 +15,17 @@ import com.example.noteapp.extensions.gone
 import com.example.noteapp.extensions.visible
 import com.example.noteapp.utils.load
 
+/**
+ * The NotesAdapter.kt to populate the recyclerview
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
 class NotesAdapter(
     private val noteItemClickListener: NoteItemClickListener,
     private val notesList: List<Notes>
 ) : RecyclerView.Adapter<NotesAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        //creating views
         var mainLayout = view.findViewById(R.id.mainLayout) as CardView
         var imgView = view.findViewById(R.id.imgView) as ImageView
         var tvTitle = view.findViewById(R.id.tvTitle) as TextView
@@ -30,6 +35,7 @@ class NotesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        //returning the View Holder
         return MyViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_notes_ui, parent, false)
@@ -41,6 +47,7 @@ class NotesAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        //populating the data from list to view
         val note = notesList[position]
         note.run {
             holder.tvTitle.text = title
@@ -53,12 +60,14 @@ class NotesAdapter(
             else
                 holder.tvUpdatedTag.gone()
 
+            //attaching the onCLick to the layout
             holder.mainLayout.setOnClickListener {
                 noteItemClickListener.onItemClickListener(this)
             }
         }
     }
 
+    //interface to get the callback
     interface NoteItemClickListener {
         fun onItemClickListener(note: Notes)
     }

@@ -14,7 +14,6 @@ class App : Application() {
         super.onCreate()
         instance = this
         DIFramework.init(this)
-
     }
 
     companion object {
