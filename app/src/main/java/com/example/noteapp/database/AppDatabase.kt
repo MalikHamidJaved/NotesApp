@@ -9,6 +9,7 @@ import com.example.noteapp.database.model.Notes
 /**
  * The AppDatabase.kt
  * @author Malik Dawar, malikdawar@hotmail.com
+ * Main DB for the app
  */
 @Database(entities = [Notes::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

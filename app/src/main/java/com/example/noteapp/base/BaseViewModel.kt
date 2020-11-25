@@ -50,7 +50,7 @@ abstract class BaseViewModel<View> : ViewModel() {
      */
     protected fun getLifecycleOwner(): LifecycleOwner {
         if (lifecycleOwner == null)
-            throw NullPointerException("LifecycleOwner is null please attach lifecycleOwner 1st by calling getLifecycleOwner() method")
+            throw NullPointerException("LifecycleOwner is null please attach lifecycleOwner 1st")
 
         return lifecycleOwner!!
     }
