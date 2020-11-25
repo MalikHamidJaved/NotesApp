@@ -25,7 +25,6 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         }
     }
 
-
     //Save note in DB using
     fun saveNoteInDB(title: String?, imgUrl: String?= null, description: String?) {
         validateData(title, description).let {
