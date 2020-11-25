@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 /**
  * The Notes.kt
  * @author Malik Dawar, malikdawar@hotmail.com
+ * data class for the DataBase
  */
-
 @Entity(tableName = "note_table")
 data class Notes(
 
