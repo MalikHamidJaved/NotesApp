@@ -13,7 +13,7 @@ import com.example.noteapp.database.model.Notes
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun setNote(note: Notes)
+    fun setNote(note: Notes) : Long
 
     @Query("SELECT * from note_table ORDER BY id ASC")
     fun getNotes(): LiveData<List<Notes>>
@@ -25,7 +25,7 @@ interface NotesDao {
     fun getSingleNote(id: Int): LiveData<Notes>
 
     @Update
-    fun updateNote(vararg note: Notes)
+    fun updateNote(vararg note: Notes) : Int
 
     @Query("DELETE FROM note_table WHERE id = :id")
     fun deleteById(id: Int)

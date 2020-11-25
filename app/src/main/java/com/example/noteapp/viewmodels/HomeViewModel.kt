@@ -13,7 +13,7 @@ class HomeViewModel : BaseViewModel<HomeViewModel.View>() {
 
     fun getNotesFromDB(){
         getView().showProgressBar()
-        notesRepository.getNotesList()?.observe(getObserver(), {
+        notesRepository.getNotesList()?.observe(getLifecycleOwner(), {
             getView().dismissProgressBar()
             if (it.isNotEmpty()){
                 getView().onNotesFromDB(it)
