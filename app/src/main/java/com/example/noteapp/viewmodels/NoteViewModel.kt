@@ -2,6 +2,7 @@ package com.example.noteapp.viewmodels
 
 import com.example.noteapp.base.BaseViewModel
 import com.example.noteapp.database.model.Notes
+import com.example.noteapp.extensions.checkValidURL
 
 /**
  * The HomeViewModel.kt
@@ -10,7 +11,7 @@ import com.example.noteapp.database.model.Notes
 class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
 
     fun getSingleNote(id: Int) {
-        notesRepository.getNote(id)?.observe(getLifecycleOwner(), {
+        notesRepository.getNote(id)?.observe(getObserver(), {
             if (it != null) {
                 getView().onSingleNote(it)
             }
