@@ -2,23 +2,31 @@ package com.example.noteapp.viewmodels
 
 import com.example.noteapp.base.BaseViewModel
 import com.example.noteapp.database.model.Notes
-import com.example.noteapp.extensions.checkValidURL
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+
 
 /**
  * The HomeViewModel.kt
  * @author Malik Dawar, malikdawar@hotmail.com
  */
 class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
-
+    //get the single note from DB using Async, new API in kotlin Coroutines
+    @ExperimentalCoroutinesApi
     fun getSingleNote(id: Int) {
-        notesRepository.getNote(id)?.observe(getObserver(), {
-            if (it != null) {
-                getView().onSingleNote(it)
+        val getDataAsAsync = GlobalScope.async { notesRepository.getNote(id) }
+        getDataAsAsync.invokeOnCompletion { cause ->
+            if (cause == null) {
+                getDataAsAsync.getCompleted()?.let {
+                    getView().onSingleNote(it)
+                }
             }
-        })
+        }
     }
 
-    fun saveNoteInDB(title: String?, imgUrl: String?, description: String?) {
+    //Save note in DB using
+    fun saveNoteInDB(title: String?, imgUrl: String?= null, description: String?) {
         validateData(title, description).let {
             if (it) {
                 notesRepository.saveNote(
@@ -35,6 +43,7 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         }
     }
 
+    //To update the note in DB sync way
     fun updateNoteInDB(id: Int, title: String?, imgUrl: String?, description: String?) {
         validateData(title, description).let {
             if (it) {
@@ -54,6 +63,7 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         }
     }
 
+    //Validation method to validate data
     private fun validateData(title: String?, description: String?): Boolean {
         getView().updateButtonState(false)
 
@@ -71,6 +81,7 @@ class NoteViewModel : BaseViewModel<NoteViewModel.View>() {
         return true
     }
 
+    //Delete the  note in DB in sync way
     fun deleteItem(id: Int) {
         getView().updateButtonState(false)
         notesRepository.deleteById(id)

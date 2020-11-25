@@ -3,12 +3,10 @@ package com.example.noteapp.viewmodels
 import com.example.noteapp.base.BaseViewModel
 import com.example.noteapp.database.model.Notes
 
-
 /**
  * The HomeViewModel.kt
  * @author Malik Dawar, malikdawar@hotmail.com
  */
-
 class HomeViewModel : BaseViewModel<HomeViewModel.View>() {
 
     fun getNotesFromDB(){

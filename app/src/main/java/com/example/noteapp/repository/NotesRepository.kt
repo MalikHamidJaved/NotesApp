@@ -12,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 /**
  * The Repository.kt
  * @author Malik Dawar, malikdawar@hotmail.com
+ * Access point on the DB
  */
 
 class NotesRepository private constructor() : BaseRepository(),  CoroutineScope {
@@ -23,7 +24,7 @@ class NotesRepository private constructor() : BaseRepository(),  CoroutineScope 
 
     fun getNotesList() = notesDao?.getNotes()
 
-    fun getNote(id: Int) = notesDao?.getSingleNote(id)
+    suspend fun getNote(id: Int) = notesDao?.getSingleNote(id)
 
     fun saveNote(note: Notes) {
         launch { saveNoteInDB(note) }
