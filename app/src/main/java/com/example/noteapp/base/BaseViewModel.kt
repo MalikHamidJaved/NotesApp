@@ -48,9 +48,9 @@ abstract class BaseViewModel<View> : ViewModel() {
      * @returns Observer if attached
      * @throws NullPointerException if not.
      */
-    protected fun getLifecycleOwner(): LifecycleOwner {
+    protected fun getObserver(): LifecycleOwner {
         if (lifecycleOwner == null)
-            throw NullPointerException("LifecycleOwner is null please attach lifecycleOwner")
+            throw NullPointerException("Observer is null please attach lifecycleOwner 1st by calling getObserver() method")
 
         return lifecycleOwner!!
     }
