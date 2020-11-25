@@ -8,7 +8,7 @@ import android.net.NetworkRequest
 import android.os.Build
 
 /**
- * An internet monitor class for Android API Lollipop and above.
+ * An InternetMonitor class for Android API Lollipop and above.
  * @param onInternetConnectivityListener A listener for states.
  * @author Malik Dawar, malikdawar@hotmail.com
  */
