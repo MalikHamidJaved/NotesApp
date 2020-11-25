@@ -19,9 +19,8 @@ import org.junit.Before
 import java.io.IOException
 
 /**
- * Instrumented test, which will execute on an Android device.
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * The NotesDaoTest.kt
+ * @author Malik Dawar, malikdawar@hotmail.com
  */
 @RunWith(AndroidJUnit4::class)
 class NotesDaoTest {
@@ -82,6 +81,16 @@ class NotesDaoTest {
     }
 
     @Test
+    fun deleteSingleNote() {
+        notesDao.setNote(Notes(1, "Title 1", "Lorem ipsum is a dummy text", ""))
+        notesDao.deleteById(1)
+        runBlocking(Dispatchers.Main.immediate) {
+            val note = notesDao.getSingleNote(1)
+            assertTrue(note == null)
+        }
+    }
+
+    @Test
     fun getNotes() {
         var observer: Observer<List<Notes>>? = null
         runBlocking(Dispatchers.Main.immediate) {
@@ -97,18 +106,12 @@ class NotesDaoTest {
 
     @Test
     fun getSingleNote() {
-        var observer: Observer<Notes>? = null
+        notesDao.setNote(Notes(1, "Title 1", "Lorem ipsum is a dummy text", ""))
         runBlocking(Dispatchers.Main.immediate) {
             val note = notesDao.getSingleNote(1)
-            observer = Observer<Notes> {
-                note.removeObserver(observer!!)
-                assertNotNull(it)
-            }
-            note.observeForever(observer!!)
+            assertTrue(note!!.id == 1)
         }
-        notesDao.setNote(Notes(1, "Title 1", "Lorem ipsum is a dummy text", ""))
     }
-
 
     @After
     @Throws(IOException::class)

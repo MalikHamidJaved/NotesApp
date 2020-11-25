@@ -1,48 +1,76 @@
-    package com.example.noteapp.viewmodels
+package com.example.noteapp.viewmodels
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.noteapp.database.model.Notes
-import org.junit.Assert.assertTrue
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 
+/**
+ * The NoteViewModelTest.kt, to validate ViewModel
+ * @author Malik Dawar, malikdawar@hotmail.com
+ */
 @RunWith(AndroidJUnit4::class)
-class NoteViewModelTest : HomeViewModel.View {
+class NoteViewModelTest : NoteViewModel.View {
 
-    private lateinit var homeViewModel: HomeViewModel
-
-    @Mock
-    private lateinit var lifecycleOwner: LifecycleOwner
+    private lateinit var noteViewModel: NoteViewModel
 
     @Before
     fun initViewModel() {
-        homeViewModel = HomeViewModel().apply {
+        noteViewModel = NoteViewModel().apply {
             attachView(this@NoteViewModelTest)
-            attachObserver(lifecycleOwner)
         }
     }
 
+    @ExperimentalCoroutinesApi
     @Test
-    fun getNote() {
-        homeViewModel.getNotesFromDB()
+    fun getNoteById() {
+        noteViewModel.getSingleNote(1)
     }
 
-    override fun onNotesFromDB(notes: List<Notes>) {
-        assertTrue(notes.isNotEmpty())
+    @Test
+    fun saveNoteInDbWithOutImage() {
+        noteViewModel.saveNoteInDB(title = "hello", description = "this is test data")
     }
 
-    override fun onUpdateUser(message: String) {
-        assertTrue(message.isNotEmpty())
+    @Test
+    fun saveNoteInDbWithImage() {
+        noteViewModel.saveNoteInDB(
+            title = "hello", description = "this is test data",
+            imgUrl = "https://image.shutterstock.com/image-photo/istanbul-bosphorus-bridge-turkey-260nw-691092586.jpg"
+        )
     }
 
-    override fun showProgressBar() {
+    @Test
+    fun deleteNoteFromDbById() {
+        noteViewModel.deleteItem(1)
+    }
+
+    @Test
+    fun updateNoteInDB() {
+        noteViewModel.updateNoteInDB(
+            1,
+            "hello",
+            "htpps://www.google.com/images/logo.png",
+            "hello from gooogle"
+        )
+    }
+
+
+    override fun onUpdateUser(error: String) {
 
     }
 
-    override fun dismissProgressBar() {
+    override fun onSingleNote(notes: Notes) {
+
+    }
+
+    override fun onSuccess(message: String) {
+
+    }
+
+    override fun updateButtonState(active: Boolean) {
 
     }
 }
