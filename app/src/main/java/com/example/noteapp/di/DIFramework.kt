@@ -16,7 +16,6 @@ import org.koin.dsl.module
 object DIFramework {
 
     fun init(context: Context) {
-
         // start Koin!
         startKoin {
             // declare used Android context

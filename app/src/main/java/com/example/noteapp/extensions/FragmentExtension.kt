@@ -5,7 +5,6 @@ import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.noteapp.R
 
@@ -13,7 +12,6 @@ import com.example.noteapp.R
  * The FragmentExtension.kt
  * @author Malik Dawar, malikdawar@hotmail.com
  */
-
 
 /**
  * Extension function to replace Fragment Safely from AppCompatActivity
@@ -79,28 +77,4 @@ fun Fragment.replaceFragment(
     transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
     fragment.arguments = bundle
     transaction.commit()
-}
-
-/**
- * Extension function to Fragment BackStack
- * @author Dawar Malik.
- */
-fun AppCompatActivity.clearBackStack() {
-    val fm: FragmentManager = this.supportFragmentManager
-    for (i in 0 until fm.backStackEntryCount) {
-        fm.popBackStack()
-    }
-}
-
-/**
- * Extension function to pop back stack
- * @author Dawar Malik.
- */
-fun AppCompatActivity.backPress() {
-    val fragmentManager: FragmentManager = this.supportFragmentManager
-    if (fragmentManager.backStackEntryCount > 1) {
-        fragmentManager.popBackStack()
-    } else {
-        this.finish()
-    }
 }
